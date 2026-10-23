@@ -388,17 +388,17 @@ h1 {
 .group-card p { color: var(--muted); font-size: 13px; line-height: 1.7; min-height: 44px; }
 .group-card .btn { width: 100%; margin-top: 10px; }
 
-.upload-panel {
+.-panel {
   margin-top: 22px;
   padding: 20px;
   border-radius: 24px;
 }
 
-.upload-panel h3 { margin: 0 0 8px; }
-.upload-panel p { color: var(--muted); font-size: 12px; line-height: 1.7; }
-.upload-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+.-panel h3 { margin: 0 0 8px; }
+.-panel p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.-controls { display: flex; flex-wrap: wrap; gap: 10px; }
 
-.upload-label {
+.-label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -412,9 +412,9 @@ h1 {
   transition: background .2s;
 }
 
-.upload-label:hover { background: #ff3d8118; }
+.-label:hover { background: #ff3d8118; }
 
-.upload-label input { display: none; }
+.-label input { display: none; }
 
 footer {
   padding: 25px 0 35px;
@@ -527,7 +527,7 @@ footer span { color: #ff6598; }
 <div class="ambient one"></div>
 <div class="ambient two"></div>
 
-<!-- INTRO: upload your own video using the controls below -->
+<!-- INTRO:  your own video using the controls below -->
 <div class="intro" id="intro">
   <video id="introVideo" playsinline muted></video>
   <div class="intro-shade"></div>
@@ -647,15 +647,15 @@ footer span { color: #ff6598; }
       <div class="upload-controls">
         <label class="upload-label">
           🖼️ Profile image
-          <input type="file" id="profileUpload" accept="image/*">
+          
         </label>
         <label class="upload-label">
           🛡️ Clan logo
-          <input type="file" id="clanUpload" accept="image/*">
+          
         </label>
         <label class="upload-label">
           🎬 Intro video
-          <input type="file" id="videoUpload" accept="video/*">
+          
         </label>
         <button class="upload-label" id="previewIntroBtn" type="button">
           ▶ Preview intro
@@ -777,7 +777,7 @@ function previewFile(inputId, targetId, isVideo = false) {
 
 previewFile("profileUpload", "profileImage");
 previewFile("clanUpload", "clanImage");
-previewFile("videoUpload", "introVideo", true);
+previewFile("video", "introVideo", true);
 
 /* Intro screen */
 
