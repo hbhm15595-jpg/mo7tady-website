@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111013">
+<meta name="description" content="Mo7 Tady | Social links and HI5 SUDAN clan">
+<title>Mo7 Tady | Official Website</title>
+
+<style>
+:root {
+  --bg: #111013;
+  --glass: rgba(255,255,255,.075);
+  --border: rgba(255,255,255,.14);
+  --pink: #ff3d81;
+  --purple: #b86aff;
+  --orange: #ff7547;
+  --gold: #ffc857;
+  --text: #fff9fc;
+  --muted: #b8adb9;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 15%, #5a164333, transparent 40%),
+    radial-gradient(ellipse at 85% 35%, #8d3a5b22, transparent 35%),
+    radial-gradient(ellipse at 50% 100%, #a855f722, transparent 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
+}
+
+button, a, input { font: inherit; }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+a { color: inherit; text-decoration: none; }
+
+button { color: inherit; }
+
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ambient {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .17;
+  pointer-events: none;
+  z-index: -1;
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+.ambient.one { background: var(--pink); top: 5%; left: -150px; }
+.ambient.two { background: var(--purple); right: -150px; bottom: 5%; animation-delay: -6s; }
+
+@keyframes float {
+  to { transform: translate(60px, 50px) scale(1.2); }
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 45px #00000022, inset 0 1px #ffffff0c;
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+
+nav {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  width: min(1100px, calc(100% - 28px));
+  margin: 12px auto 0;
+  min-height: 66px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 850;
+  letter-spacing: -.6px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--orange));
+  color: white;
+  box-shadow: 0 5px 22px #ff3d8144;
+}
+
+.brand small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.nav-actions { display: flex; gap: 8px; }
+
+.btn {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  border-radius: 15px;
+  padding: 11px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: transform .25s, background .25s, border-color .25s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.12);
+  border-color: #ff3d8180;
+}
+
+.btn-primary {
+  background: linear-gradient(110deg, #ff3d81, #a855f7);
+  border: 0;
+  font-weight: 750;
+  box-shadow: 0 7px 28px #ff3d8125;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(110deg, #ff7547, #ff3d81);
+}
+
+main {
+  width: min(1000px, calc(100% - 32px));
+  margin: auto;
+}
+
+.page {
+  display: none;
+  padding: 55px 0 45px;
+  animation: appear .5s ease both;
+}
+
+.page.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 40px 22px;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: -150px;
+  left: calc(50% - 120px);
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: .13;
+  filter: blur(65px);
+  pointer-events: none;
+}
+
+.profile-wrap {
+  position: relative;
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 22px;
+}
+
+.profile-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 36px;
+  background: conic-gradient(var(--pink), var(--gold), var(--purple), var(--pink));
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+.profile-img {
+  position: absolute;
+  inset: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  object-fit: cover;
+  border-radius: 32px;
+  background: #29232d;
+  border: 4px solid #171319;
+}
+
+h1 {
+  font-size: clamp(35px, 7vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -2.5px;
+  margin: 12px 0;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #ff6598, #d1a0ff, #ffc857);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 510px;
+  margin: 15px auto 24px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border-radius: 30px;
+  font-size: 12px;
+  color: #f8d9e8;
+  border: 1px solid #ff3d8133;
+  background: #ff3d810c;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff6598;
+  box-shadow: 0 0 12px #ff6598;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin: 38px 2px 16px;
+}
+
+.section-head h2 { margin: 0; font-size: 23px; }
+.section-head p { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.social-card {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 23px;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+
+.social-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff659866;
+  background: #ffffff10;
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 24px;
+  background: linear-gradient(145deg, #ff3d812b, #a855f72b);
+  border: 1px solid #ffffff10;
+}
+
+.social-copy { min-width: 0; flex: 1; }
+.social-copy strong { display: block; font-size: 15px; }
+.social-copy span { color: var(--muted); font-size: 12px; display: block; margin-top: 5px; }
+.arrow { color: #ff91ba; font-size: 20px; }
+
+.clan-banner {
+  margin-top: 25px;
+  border-radius: 28px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #ff754729, transparent 55%),
+    linear-gradient(120deg, #a855f714, #ff3d8110),
+    var(--glass);
+}
+
+.clan-banner h3 { font-size: 24px; margin: 0 0 8px; }
+.clan-banner p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0 0 15px; }
+.clan-symbol { font-size: clamp(44px, 8vw, 72px); filter: drop-shadow(0 0 22px #ff3d8144); }
+
+.clan-hero {
+  padding: 35px 20px;
+  text-align: center;
+  border-radius: 32px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #ff3d8122, transparent 65%),
+    var(--glass);
+}
+
+.clan-logo-wrap {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 38px;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--orange), var(--pink), var(--purple));
+  box-shadow: 0 10px 45px #ff3d8120;
+}
+
+.clan-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 35px;
+  background: #211822;
+}
+
+.clan-hero h1 { font-size: clamp(38px, 8vw, 64px); }
+
+.tag {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #ffc4dc;
+  background: #ff3d8114;
+  border: 1px solid #ff3d8133;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.group-card { padding: 23px; border-radius: 25px; }
+.group-card .big-icon { font-size: 32px; }
+.group-card h3 { margin: 15px 0 8px; font-size: 19px; }
+.group-card p { color: var(--muted); font-size: 13px; line-height: 1.7; min-height: 44px; }
+.group-card .btn { width: 100%; margin-top: 10px; }
+
+.upload-panel {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 24px;
+}
+
+.upload-panel h3 { margin: 0 0 8px; }
+.upload-panel p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.upload-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #ffffff08;
+  font-size: 13px;
+  transition: background .2s;
+}
+
+.upload-label:hover { background: #ff3d8118; }
+
+.upload-label input { display: none; }
+
+footer {
+  padding: 25px 0 35px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer span { color: #ff6598; }
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 22px;
+  background: #111013;
+  text-align: center;
+}
+
+.intro.show { display: flex; }
+
+#introVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .52;
+}
+
+.intro-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #111013 0%, #11101355 60%, #111013aa 100%);
+}
+
+.intro-content { position: relative; z-index: 2; }
+.intro-content h1 { font-size: clamp(42px, 10vw, 80px); }
+.intro-content p { color: #ddd0dc; }
+
+.intro-skip {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  right: 22px;
+}
+
+.hidden { display: none !important; }
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  z-index: 200;
+  padding: 12px 18px;
+  border-radius: 15px;
+  background: #30232f;
+  border: 1px solid #ff659866;
+  transition: .25s;
+  pointer-events: none;
+  font-size: 13px;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (min-width: 720px) {
+  .social-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero { padding: 50px 35px; }
+  .page { padding-top: 45px; }
+}
+
+@media (max-width: 520px) {
+  nav { border-radius: 20px; padding: 10px; }
+  .brand { gap: 8px; font-size: 13px; }
+  .brand-mark { width: 35px; height: 35px; }
+  .nav-actions .btn { padding: 10px; font-size: 12px; }
+  main { width: calc(100% - 24px); }
+  .page { padding-top: 30px; }
+  .hero { padding: 32px 16px; border-radius: 28px; }
+  .profile-wrap { width: 108px; height: 108px; }
+  h1 { letter-spacing: -1.5px; }
+  .social-grid, .groups { grid-template-columns: 1fr; }
+  .social-card { padding: 15px; }
+  .clan-banner { padding: 19px; }
+  .clan-banner .btn { font-size: 12px; }
+  .clan-symbol { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas id="snow"></canvas>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<!-- INTRO: upload your own video using the controls below -->
+<div class="intro" id="intro">
+  <video id="introVideo" playsinline muted></video>
+  <div class="intro-shade"></div>
+  <button class="btn intro-skip" id="skipIntro">Skip ✕</button>
+  <div class="intro-content">
+    <div class="brand-mark" style="margin:auto;width:58px;height:58px;border-radius:20px;font-size:22px">M</div>
+    <h1><span class="gradient-text">MO7 TADY</span></h1>
+    <p>Personal universe. One destination.</p>
+    <button class="btn btn-primary" id="enterSite">Enter website ↗</button>
+  </div>
+</div>
+
+<nav class="glass">
+  <a href="#" class="brand" id="homeBrand" aria-label="Go home">
+    <div class="brand-mark">M</div>
+    <div>
+      MO7 TADY
+      <small>OFFICIAL WEBSITE</small>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <button class="btn" id="homeBtn">⌂ Home</button>
+    <button class="btn btn-primary" id="clanBtn">HI5 SUDAN ↗</button>
+  </div>
+</nav>
+
+<main>
+  <!-- PAGE 1: SOCIAL MEDIA -->
+  <section class="page active" id="homePage">
+    <div class="hero glass">
+      <div class="profile-wrap">
+        <div class="profile-ring"></div>
+        <img class="profile-img" id="profileImage"
+          alt="Your profile image"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='100%25' height='100%25' fill='%232a202d'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='48' fill='%23ff6598' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E">
+      </div>
+
+      <div class="status"><span class="status-dot"></span> WELCOME TO MY WORLD</div>
+      <h1>Hey, I'm <span class="gradient-text" id="displayName">Mo7 Tady</span></h1>
+      <p class="subtitle" id="bioText">
+        Content creator, gamer and digital creator.
+        Connect with me across my social platforms.
+      </p>
+      <button class="btn btn-primary" id="exploreBtn">Explore my links ↓</button>
+    </div>
+
+    <div class="section-head" id="socialSection">
+      <div>
+        <h2>Find me online <span class="gradient-text">✦</span></h2>
+        <p>Choose your platform and let's connect.</p>
+      </div>
+    </div>
+
+    <div class="social-grid" id="socialGrid"></div>
+
+    <div class="clan-banner glass">
+      <div>
+        <div class="tag">FREE FIRE • SUDAN</div>
+        <h3>Meet <span class="gradient-text">HI5 SUDAN</span></h3>
+        <p>One clan. One family. One mission.<br>
+          Enter the clan hub to find our WhatsApp groups.</p>
+        <button class="btn btn-primary" id="bannerClanBtn">Explore the clan ↗</button>
+      </div>
+      <div class="clan-symbol" aria-hidden="true">✦</div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: CLAN -->
+  <section class="page" id="clanPage">
+    <div class="clan-hero glass">
+      <div class="clan-logo-wrap">
+        <img class="clan-logo" id="clanImage" alt="HI5 SUDAN clan logo"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='100%25' height='100%25' fill='%232a202d'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' font-size='34' font-weight='bold' fill='%23ff6598' font-family='Arial'%3EHI5%3C/text%3E%3C/svg%3E">
+      </div>
+      <div class="tag">OFFICIAL CLAN HUB</div>
+      <h1><span class="gradient-text">HI5 SUDAN</span></h1>
+      <p class="subtitle">United by the game. Connected as a family.
+        Welcome to our official clan hub.</p>
+      <button class="btn" id="backHomeBtn">← Back to my profile</button>
+    </div>
+
+    <div class="section-head">
+      <div>
+        <h2>Join our community</h2>
+        <p>Choose the right WhatsApp group below.</p>
+      </div>
+    </div>
+
+    <div class="groups">
+      <div class="group-card glass">
+        <div class="big-icon">🎯</div>
+        <h3>Training Group</h3>
+        <p>Practice sessions, team coordination,
+          training schedules and improving our gameplay.</p>
+        <a class="btn btn-primary" id="trainingLink" href="#" target="_blank" rel="noopener noreferrer">
+          Join training group ↗
+        </a>
+      </div>
+
+      <div class="group-card glass">
+        <div class="big-icon">🏆</div>
+        <h3>Official Group</h3>
+        <p>Official announcements, clan updates,
+          important news and community information.</p>
+        <a class="btn" id="officialLink" href="#" target="_blank" rel="noopener noreferrer">
+          Join official group ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="upload-panel glass">
+      <h3>✦ Make it yours</h3>
+      <p>Choose your own images and intro video from your device.
+        These previews are local to this browser; to publish them,
+        upload the files with your website on your hosting platform.</p>
+
+      <div class="upload-controls">
+        <label class="upload-label">
+          🖼️ Profile image
+          <input type="file" id="profileUpload" accept="image/*">
+        </label>
+        <label class="upload-label">
+          🛡️ Clan logo
+          <input type="file" id="clanUpload" accept="image/*">
+        </label>
+        <label class="upload-label">
+          🎬 Intro video
+          <input type="file" id="videoUpload" accept="video/*">
+        </label>
+        <button class="upload-label" id="previewIntroBtn" type="button">
+          ▶ Preview intro
+        </button>
+      </div>
+      <p id="uploadStatus" aria-live="polite">No files selected yet.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Made with <span>♥</span> by <span>Mo7 Tady</span> · HI5 SUDAN
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================
+   CUSTOMIZE YOUR WEBSITE HERE
+   Replace the example links with your real profile URLs.
+   ===================================================== */
+
+const CONFIG = {
+  name: "Mo7 Tady",
+  bio: "Content creator, gamer and digital creator. Connect with me across my social platforms.",
+
+  socials: [
+    { name: "Instagram", handle: "@YOUR_INSTAGRAM", icon: "◎", url: "https://instagram.com/" },
+    { name: "TikTok", handle: "@YOUR_TIKTOK", icon: "♪", url: "https://tiktok.com/" },
+    { name: "Facebook", handle: "My Facebook page", icon: "f", url: "https://facebook.com/" },
+    { name: "Telegram", handle: "Join my channel", icon: "➤", url: "https://t.me/" },
+    { name: "WhatsApp", handle: "Message me directly", icon: "◉", url: "https://wa.me/" }
+  ],
+
+  trainingGroup: "https://chat.whatsapp.com/REPLACE_WITH_TRAINING_LINK",
+  officialGroup: "https://chat.whatsapp.com/REPLACE_WITH_OFFICIAL_LINK"
+};
+
+/* Do not change anything below unless you want to edit
+   the website's behavior or visual design. */
+
+document.title = CONFIG.name + " | Official Website";
+document.getElementById("displayName").textContent = CONFIG.name;
+document.getElementById("bioText").textContent = CONFIG.bio;
+
+const socialGrid = document.getElementById("socialGrid");
+
+CONFIG.socials.forEach(social => {
+  const a = document.createElement("a");
+  a.className = "social-card glass";
+  a.href = social.url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.innerHTML = `
+    <div class="social-icon" aria-hidden="true">${social.icon}</div>
+    <div class="social-copy">
+      <strong>${social.name}</strong>
+      <span>${social.handle}</span>
+    </div>
+    <span class="arrow" aria-hidden="true">↗</span>
+  `;
+  socialGrid.appendChild(a);
+});
+
+document.getElementById("trainingLink").href = CONFIG.trainingGroup;
+document.getElementById("officialLink").href = CONFIG.officialGroup;
+
+/* Navigation between the two pages */
+
+const homePage = document.getElementById("homePage");
+const clanPage = document.getElementById("clanPage");
+
+function showPage(page) {
+  homePage.classList.toggle("active", page === "home");
+  clanPage.classList.toggle("active", page === "clan");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("homeBtn").addEventListener("click", () => showPage("home"));
+document.getElementById("homeBrand").addEventListener("click", e => {
+  e.preventDefault();
+  showPage("home");
+});
+document.getElementById("clanBtn").addEventListener("click", () => showPage("clan"));
+document.getElementById("bannerClanBtn").addEventListener("click", () => showPage("clan"));
+document.getElementById("backHomeBtn").addEventListener("click", () => showPage("home"));
+
+document.getElementById("exploreBtn").addEventListener("click", () => {
+  document.getElementById("socialSection").scrollIntoView({
+    behavior: "smooth", block: "start"
+  });
+});
+
+/* Upload images and video */
+
+const objectURLs = [];
+
+function previewFile(inputId, targetId, isVideo = false) {
+  document.getElementById(inputId).addEventListener("change", event => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    objectURLs.push(url);
+
+    const target = document.getElementById(targetId);
+    if (isVideo) {
+      target.src = url;
+      target.load();
+    } else {
+      target.src = url;
+    }
+
+    document.getElementById("uploadStatus").textContent =
+      file.name + " selected. Preview updated in this browser.";
+    notify("Preview updated: " + file.name);
+  });
+}
+
+previewFile("profileUpload", "profileImage");
+previewFile("clanUpload", "clanImage");
+previewFile("videoUpload", "introVideo", true);
+
+/* Intro screen */
+
+const intro = document.getElementById("intro");
+const introVideo = document.getElementById("introVideo");
+
+function openIntro() {
+  intro.classList.add("show");
+  if (introVideo.src) {
+    introVideo.currentTime = 0;
+    introVideo.play().catch(() => {
+      notify("Press play to start your intro video.");
+    });
+  }
+}
+
+function closeIntro() {
+  intro.classList.remove("show");
+  introVideo.pause();
+}
+
+document.getElementById("skipIntro").addEventListener("click", closeIntro);
+document.getElementById("enterSite").addEventListener("click", closeIntro);
+document.getElementById("previewIntroBtn").addEventListener("click", openIntro);
+
+introVideo.addEventListener("ended", closeIntro);
+
+/* Snowfall canvas */
+
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+let flakes = [];
+let width = 0;
+let height = 0;
+let frame = 0;
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = Math.floor(width * dpr);
+  canvas.height = Math.floor(height * dpr);
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const count = reduceMotion ? 0 : Math.min(65, Math.floor(width / 12));
+  flakes = Array.from({ length: count }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    r: Math.random() * 2 + .7,
+    speed: Math.random() * .65 + .25,
+    drift: Math.random() * .5 - .25,
+    alpha: Math.random() * .5 + .2
+  }));
+}
+
+function drawSnow() {
+  ctx.clearRect(0, 0, width, height);
+
+  flakes.forEach(f => {
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255, 225, 239, ${f.alpha})`;
+    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    f.y += f.speed;
+    f.x += f.drift + Math.sin((f.y + frame) * .008) * .18;
+
+    if (f.y > height + 5) {
+      f.y = -5;
+      f.x = Math.random() * width;
+    }
+    if (f.x > width + 5) f.x = -5;
+    if (f.x < -5) f.x = width + 5;
+  });
+
+  frame++;
+  if (!reduceMotion) requestAnimationFrame(drawSnow);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+if (!reduceMotion) drawSnow();
+
+/* Friendly notifications */
+
+let toastTimeout;
+
+function notify(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove("show"), 3000);
+}
+
+/* Show the intro on the first visit in this browser tab.
+   Remove sessionStorage if you want it every time. */
+
+try {
+  if (!sessionStorage.getItem("mo7IntroSeen")) {
+    sessionStorage.setItem("mo7IntroSeen", "yes");
+    openIntro();
+  }
+} catch {
+  // The website still works if browser storage is unavailable.
+  openIntro();
+}
+</script>
+</body>
+</html>
