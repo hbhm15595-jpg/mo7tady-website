@@ -788,12 +788,11 @@ const introVideo = document.getElementById("introVideo");
 
 function openIntro() {
   intro.classList.add("show");
-  if (introVideo.src) {
-    introVideo.currentTime = 0;
-    introVideo.play().catch(() => {
-      notify("Press play to start your intro video.");
-    });
-  }
+  introVideo.currentTime = 0;
+
+  introVideo.play().catch(() => {
+    notify("Press play to start your intro video.");
+  });
 }
 
 function closeIntro() {
@@ -801,8 +800,13 @@ function closeIntro() {
   introVideo.pause();
 }
 
+function enterWebsite() {
+  intro.classList.remove("show");
+  introVideo.pause();
+}
+
 document.getElementById("skipIntro").addEventListener("click", closeIntro);
-document.getElementById("enterSite").addEventListener("click", closeIntro);
+document.getElementById("enterSite").addEventListener("click", enterWebsite);
 document.getElementById("previewIntroBtn").addEventListener("click", openIntro);
 
 introVideo.addEventListener("ended", closeIntro);
