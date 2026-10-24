@@ -793,9 +793,23 @@ previewFile("video", "introVideo", true);
 const intro = document.getElementById("intro");
 const introVideo = document.getElementById("introVideo");
 
+
 function openIntro() {
   intro.classList.add("show");
+  introVideo.style.display = "block";
+  introVideo.style.width = "100%";
+  introVideo.style.height = "100%";
+  introVideo.style.objectFit = "cover";
   introVideo.currentTime = 0;
+
+  const playPromise = introVideo.play();
+  if (playPromise) {
+    playPromise.catch((error) => {
+      console.error("Intro video error:", error);
+      notify("Tap to play the intro video.");
+    });
+  }
+}
 
   introVideo.play().catch(() => {
     notify("Press play to start your intro video.");
