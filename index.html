@@ -449,10 +449,34 @@ footer span { color: #ff6598; }
   opacity: .52;
 }
 
+
 .intro-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, #111013 0%, #11101355 60%, #111013aa 100%);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    #111013 0%,
+    #11101355 60%,
+    #111013aa 100%
+  );
+}
+
+#introVideo {
+  z-index: 0;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-skip {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  right: 22px;
 }
 
 .intro-content { position: relative; z-index: 2; }
@@ -643,31 +667,7 @@ footer span { color: #ff6598; }
       </div>
     </div>
 
-    <div class="upload-panel glass">
-      <h3>✦ Make it yours</h3>
-      <p>Choose your own images and intro video from your device.
-        These previews are local to this browser; to publish them,
-        upload the files with your website on your hosting platform.</p>
-
-      <div class="upload-controls">
-        <label class="upload-label">
-       
-          
-        </label>
-        <label class="upload-label">
-        
-          
-        </label>
-        <label class="upload-label">
-         
-          
-        </label>
-        <button class="upload-label" id="previewIntroBtn" type="button">
-          
-        </button>
-      </div>
-      <p id="uploadStatus" aria-live="polite">No files selected yet.</p>
-    </div>
+ 
   </section>
 </main>
 
@@ -758,62 +758,26 @@ document.getElementById("exploreBtn").addEventListener("click", () => {
   });
 });
 
-/* Upload images and video */
 
-const objectURLs = [];
-
-function previewFile(inputId, targetId, isVideo = false) {
-  document.getElementById(inputId).addEventListener("change", event => {
-    const file = event.target.files && event.target.files[0];
-    if (!file) return;
-
-    const url = URL.createObjectURL(file);
-    objectURLs.push(url);
-
-    const target = document.getElementById(targetId);
-    if (isVideo) {
-      target.src = url;
-      target.load();
-    } else {
-      target.src = url;
-    }
-
-    document.getElementById("uploadStatus").textContent =
-      file.name + " selected. Preview updated in this browser.";
-    notify("Preview updated: " + file.name);
-  });
-}
-
-previewFile("profileUpload", "profileImage");
-previewFile("clanUpload", "clanImage");
-previewFile("video", "introVideo", true);
 
 /* Intro screen */
+
 
 const intro = document.getElementById("intro");
 const introVideo = document.getElementById("introVideo");
 
-
 function openIntro() {
   intro.classList.add("show");
-  introVideo.style.display = "block";
-  introVideo.style.width = "100%";
-  introVideo.style.height = "100%";
-  introVideo.style.objectFit = "cover";
   introVideo.currentTime = 0;
 
   const playPromise = introVideo.play();
+
   if (playPromise) {
-    playPromise.catch((error) => {
-      console.error("Intro video error:", error);
-      notify("Tap to play the intro video.");
+    playPromise.catch(() => {
+      introVideo.controls = true;
+      notify("Tap play to start your intro video.");
     });
   }
-}
-
-  introVideo.play().catch(() => {
-    notify("Press play to start your intro video.");
-  });
 }
 
 function closeIntro() {
@@ -828,11 +792,8 @@ function enterWebsite() {
 
 document.getElementById("skipIntro").addEventListener("click", closeIntro);
 document.getElementById("enterSite").addEventListener("click", enterWebsite);
-document.getElementById("previewIntroBtn").addEventListener("click", openIntro);
-
 introVideo.addEventListener("ended", closeIntro);
-  
-openIntro();
+
 /* Snowfall canvas */
 
 const canvas = document.getElementById("snow");
