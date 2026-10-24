@@ -606,7 +606,7 @@ body[dir="rtl"] .section-head {
 
 <!-- INTRO:  your own video using the controls below -->
 <div class="intro" id="intro">
-  <video id="introVideo" playsinline controls>
+ <video id="introVideo" playsinline webkit-playsinline preload="auto">
   <source src="7346566057379767860.MP4" type="video/mp4">
 </video>
   <div class="intro-shade"></div>
@@ -830,14 +830,9 @@ function openIntro() {
   intro.classList.add("show");
   introVideo.currentTime = 0;
 
-  const playPromise = introVideo.play();
-
-  if (playPromise) {
-    playPromise.catch(() => {
-      introVideo.controls = true;
-      notify("Tap play to start your intro video.");
-    });
-  }
+  introVideo.play().catch(() => {
+    notify("اضغط على الفيديو لتشغيله.");
+  });
 }
 
 function closeIntro() {
@@ -846,8 +841,7 @@ function closeIntro() {
 }
 
 function enterWebsite() {
-  intro.classList.remove("show");
-  introVideo.pause();
+  closeIntro();
 }
 
 document.getElementById("skipIntro").addEventListener("click", closeIntro);
