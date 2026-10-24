@@ -543,6 +543,56 @@ footer span { color: #ff6598; }
     transition-duration: .01ms !important;
   }
 }
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.lang-btn {
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.lang-btn.active {
+  color: #ff91ba;
+  border-color: #ff3d8144;
+  background: #ff3d8114;
+}
+
+.lang-divider {
+  color: #756875;
+}
+
+body[dir="rtl"] {
+  direction: rtl;
+}
+
+body[dir="rtl"] .brand,
+body[dir="rtl"] .nav-actions,
+body[dir="rtl"] .social-card,
+body[dir="rtl"] .clan-banner {
+  direction: rtl;
+}
+
+body[dir="rtl"] .intro-skip {
+  right: auto;
+  left: 22px;
+}
+
+body[dir="rtl"] .section-head {
+  text-align: right;
+}
+
 </style>
   
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -574,7 +624,17 @@ footer span { color: #ff6598; }
     <div class="brand-mark">M</div>
     <div>
       MO7 TADY
-      <small>OFFICIAL WEBSITE</small>
+      
+<small>OFFICIAL WEBSITE</small>
+
+<div class="language-switch" aria-label="Choose language">
+  <button type="button" id="langEn" class="lang-btn active"
+    onclick="setLanguage('en')">English</button>
+  <span class="lang-divider">|</span>
+  <button type="button" id="langAr" class="lang-btn"
+    onclick="setLanguage('ar')">العربية</button>
+</div>
+
     </div>
   </a>
   <div class="nav-actions">
@@ -866,6 +926,148 @@ function notify(message) {
   toastTimeout = setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
+const translations = {
+  en: {
+    subtitle: "OFFICIAL WEBSITE",
+    welcome: "WELCOME TO MY WORLD",
+    greeting: "Hey, I'm",
+    bio: "Content creator, gamer and digital creator. Connect with me across my social platforms.",
+    explore: "Explore my links ↓",
+    find: "Find me online ✦",
+    findDesc: "Choose your platform and let's connect.",
+    clanTag: "FREE FIRE • SUDAN",
+    meet: "Meet HI5 SUDAN",
+    clanDesc: "One clan. One family. One mission.\nEnter the clan hub to find our WhatsApp groups.",
+    exploreClan: "Explore the clan ↗",
+    clanOfficial: "OFFICIAL CLAN HUB",
+    clanSubtitle: "United by the game. Connected as a family. Welcome to our official clan hub.",
+    back: "← Back to my profile",
+    join: "Join our community",
+    joinDesc: "Choose the right WhatsApp group below.",
+    training: "Training Group",
+    trainingDesc: "Practice sessions, team coordination, training schedules and improving our gameplay.",
+    joinTraining: "Join training group ↗",
+    official: "Official Group",
+    officialDesc: "Official announcements, clan updates, important news and community information.",
+    joinOfficial: "Join official group ↗",
+    home: "⌂ Home",
+    clanButton: "HI5 SUDAN ↗",
+    enter: "Enter website ↗",
+    introText: "Personal universe. One destination.",
+    skip: "Skip ✕",
+    footer: "Made with ♥ by Mo7 Tady · HI5 SUDAN",
+    instagram: "Instagram",
+    tiktok: "TikTok",
+    facebook: "Facebook",
+    telegram: "Telegram",
+    whatsapp: "WhatsApp"
+  },
+  ar: {
+    subtitle: "الموقع الرسمي",
+    welcome: "مرحباً بك في عالمي",
+    greeting: "أهلاً، أنا",
+    bio: "صانع محتوى ولاعب ومبدع رقمي. تواصل معي عبر منصاتي الاجتماعية.",
+    explore: "استكشف حساباتي ↓",
+    find: "تجدني على الإنترنت ✦",
+    findDesc: "اختر منصتك المفضلة وتواصل معي.",
+    clanTag: "فري فاير • السودان",
+    meet: "تعرّف على HI5 SUDAN",
+    clanDesc: "كلان واحد، عائلة واحدة، وهدف واحد.\nادخل إلى صفحة الكلان للانضمام إلى مجموعات الواتساب.",
+    exploreClan: "استكشف الكلان ↗",
+    clanOfficial: "الصفحة الرسمية للكلان",
+    clanSubtitle: "جمعتنا اللعبة وأصبحت بيننا عائلة. أهلاً بك في الصفحة الرسمية للكلان.",
+    back: "العودة إلى ملفي الشخصي ←",
+    join: "انضم إلى مجتمعنا",
+    joinDesc: "اختر مجموعة الواتساب المناسبة أدناه.",
+    training: "مجموعة التدريب",
+    trainingDesc: "التدريبات والتنسيق بين أعضاء الفريق ومواعيد التدريب وتطوير مستوانا في اللعب.",
+    joinTraining: "انضم إلى مجموعة التدريب ↗",
+    official: "المجموعة الرسمية",
+    officialDesc: "الإعلانات الرسمية وأخبار الكلان والتحديثات المهمة ومعلومات المجتمع.",
+    joinOfficial: "انضم إلى المجموعة الرسمية ↗",
+    home: "⌂ الرئيسية",
+    clanButton: "HI5 SUDAN ↗",
+    enter: "دخول الموقع ↗",
+    introText: "عالمي الخاص، وجهتك الواحدة.",
+    skip: "تخطي ✕",
+    footer: "صُنع بكل ♥ بواسطة Mo7 Tady · HI5 SUDAN",
+    instagram: "إنستغرام",
+    tiktok: "تيك توك",
+    facebook: "فيسبوك",
+    telegram: "تيليغرام",
+    whatsapp: "واتساب"
+  }
+};
+
+function setLanguage(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  try {
+    localStorage.setItem("mo7Language", lang);
+  } catch {}
+  
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.body.dir = lang === "ar" ? "rtl" : "ltr";
+
+  document.querySelector(".brand small").textContent = t.subtitle;
+  document.querySelector(".status").lastChild.textContent =   " " + t.welcome;
+document.querySelector(".hero h1").innerHTML =
+  `${t.greeting} <span class="gradient-text" id="displayName">${CONFIG.name}</span>`;
+  document.getElementById("bioText").textContent = t.bio;
+  document.getElementById("exploreBtn").textContent = t.explore;
+
+  document.querySelector("#socialSection h2").textContent = t.find;
+  document.querySelector("#socialSection p").textContent = t.findDesc;
+
+  document.querySelector(".clan-banner .tag").textContent = t.clanTag;
+ document.querySelector(".clan-banner h3").innerHTML =
+  lang === "ar"
+    ? `تعرّف على <span class="gradient-text">HI5 SUDAN</span>`
+    : `Meet <span class="gradient-text">HI5 SUDAN</span>`;
+  document.querySelector(".clan-banner p").innerHTML =
+    t.clanDesc.replace("\n", "<br>");
+  document.getElementById("bannerClanBtn").textContent = t.exploreClan;
+
+  document.querySelector("#clanPage .clan-hero .tag").textContent = t.clanOfficial;
+  document.querySelector("#clanPage .clan-hero .subtitle").textContent = t.clanSubtitle;
+  document.getElementById("backHomeBtn").textContent = t.back;
+
+  document.querySelector("#clanPage .section-head h2").textContent = t.join;
+  document.querySelector("#clanPage .section-head p").textContent = t.joinDesc;
+
+  const cards = document.querySelectorAll(".group-card");
+  cards[0].querySelector("h3").textContent = t.training;
+  cards[0].querySelector("p").textContent = t.trainingDesc;
+  cards[0].querySelector("a").textContent = t.joinTraining;
+
+  cards[1].querySelector("h3").textContent = t.official;
+  cards[1].querySelector("p").textContent = t.officialDesc;
+  cards[1].querySelector("a").textContent = t.joinOfficial;
+
+  document.getElementById("homeBtn").textContent = t.home;
+  document.getElementById("clanBtn").textContent = t.clanButton;
+  document.getElementById("enterSite").textContent = t.enter;
+  document.querySelector(".intro-content p").textContent = t.introText;
+  document.getElementById("skipIntro").textContent = t.skip;
+
+  document.querySelector("footer").textContent = t.footer;
+
+ document.querySelectorAll(".social-card").forEach((card, index) => {
+  const social = CONFIG.socials[index];
+  const key = social?.name?.toLowerCase();
+
+  if (key && t[key]) {
+    card.querySelector("strong").textContent = t[key];
+  }
+});
+
+  document.getElementById("langEn").classList.toggle("active", lang === "en");
+  document.getElementById("langAr").classList.toggle("active", lang === "ar");
+}
+
 /* Show the intro on the first visit in this browser tab.
    Remove sessionStorage if you want it every time. */
 
@@ -877,6 +1079,11 @@ try {
 } catch {
   // The website still works if browser storage is unavailable.
   openIntro();
+}
+  try {
+  setLanguage(localStorage.getItem("mo7Language") || "en");
+} catch {
+  setLanguage("en");
 }
 </script>
 </body>
